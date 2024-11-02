@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="chart.js" defer></script>
+  <script src="colours.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Menu</h2>
+      <ul>
+        <li class=" active ">Dashboard</li>
+        <li>Analyse</li>
+        <li>About</li>
+        <li class="logout-button">Logout</li>
+      </ul>
+    </aside>
+
+    <main class="dashboard">
+     <h1 class="main-heading">Dashboard</h1>
+      <div class="grid">
+        <div class="grid-item large">
+            <div class="side-by-side">
+                <div class="sub-section">
+                    <h3>Button Click Ratio A/B</h3>
+                    <div class="chart">
+                        <canvas id="clickRatioChart"></canvas>
+                    </div>   
+                </div>
+                <div class="sub-section">
+                    <h3>Conversion Rates</h3>
+                    <div class="chart">
+                        <canvas id="conversionRateChart"></canvas>
+                    </div>       
+                </div>                  
+            </div>
+        </div>
+        
+        <div class="grid-item small">
+          <h3>Colour Contrast Checker</h3>
+          <div id="contrastResultA" class="result-box"></div>
+          <div id="contrastResultB" class="result-box"></div>
+        </div>
+
+        <div class="grid-item small">
+          <h3>Time Spent Ratio</h3>
+          <div class="chart">
+            <canvas id="timeSpentChart"></canvas>
+          </div>
+        </div>
+
+        <div class="grid-item large">
+          <h3>Eye Motion Tracker</h3>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
+  
