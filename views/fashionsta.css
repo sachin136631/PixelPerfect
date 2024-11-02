@@ -20,8 +20,8 @@
 .navbar-dark .navbar-nav .nav-link {
   font-family: 'Nunito', sans-serif;
   position: relative;
-  margin-left: 35px; /* Increased spacing */
-  padding: 20px 0; /* Reduced padding for proper spacing */
+  margin-left: 35px; 
+  padding: 20px 0; 
   color: #FFFFFF;
   font-size: 18px;
   font-weight: 600;
@@ -39,7 +39,7 @@
   content: "";
   width: 0;
   height: 2px;
-  bottom: -5px; /* Positioned directly below the text */
+  bottom: -5px; 
   left: 0;
   background: var(--primary);
   transition: width .3s ease, left .3s ease;
@@ -53,8 +53,8 @@
 
   
   .hero {
-    background: url('assets/hero_image.jpg') no-repeat center top/cover;
-    height: 75vh; /* 3/4th of the screen height */
+    background: url('../public/assets/website1/hero_image.jpg') no-repeat center top/cover;
+    height: 75vh; 
     display: flex;
     padding: 20px;
     justify-content: flex-end;
@@ -84,7 +84,7 @@
 .scrolling-text span {
     display: inline-block;
     padding-left: 100%; 
-    animation: scroll-text 60s linear infinite; /* 10s for seamless scrolling */
+    animation: scroll-text 60s linear infinite; 
 }
 
 @keyframes scroll-text {
@@ -109,22 +109,22 @@
   }
   
   .hero-buttons button:hover {
-    background-color: #555; /* This will target individual buttons on hover */
+    background-color: #555; 
   }
   
   button {
     padding: 5px 5px;
     width: 150px;
     height: 30px;
-    border-radius: 15px; /* Make sure it has the px unit */
+    border-radius: 15px; 
     background-color: #f65454;
     color: white;
-    transition: background-color 0.3s ease; /* Added 'ease' for smoother transition */
+    transition: background-color 0.3s ease; 
     border: none;
   }
   
   button:hover {
-    background-color: #d44444; /* Darker shade for hover effect */
+    background-color: #d44444;
   }
   
   footer {
@@ -151,8 +151,8 @@
   .category-link {
     text-decoration: none;
     color: black;
-    width: 30%; /* Makes them a bit smaller */
-    text-align: center;
+    width: 30%; 
+    text-align : center;
   }
   
   .category-link img {
@@ -187,7 +187,7 @@
   .prod-link {
     text-decoration: none;
     color: black;
-    width: 30%; /* Makes them a bit smaller */
+    width: 30%; 
     text-align: center;
   }
   
@@ -203,7 +203,7 @@
     font-size: 1.5rem;
   }   
 
-/*hover eff*/
+
 .category-link img,
 .prod-link img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -211,12 +211,12 @@
 
 .category-link img:hover,
 .prod-link img:hover {
-  transform: scale(1.05); /* Slightly enlarge on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add a shadow effect */
+  transform: scale(1.05); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
 }
 
   
-/* Responsive styling for Shop by Categories and Latest Deals sections */
+
 
 @media (max-width: 992px) {
   .category-container,
@@ -227,7 +227,7 @@
 
   .category-link,
   .prod-link {
-    width: 80%; /* Adjust width for medium screens */
+    width: 80%; 
     margin-bottom: 20px;
   }
 }
@@ -235,18 +235,18 @@
 @media (max-width: 768px) {
   .category-link img,
   .prod-link img {
-    width: 100%; /* Full width images on smaller screens */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto; 
   }
   
   .category-link,
   .prod-link {
-    width: 100%; /* Full width containers */
+    width: 100%; 
   }
   
   .shop-by-categories h2,
   .deals h2 {
-    font-size: 1.8rem; /* Slightly reduce heading font size on smaller screens */
+    font-size: 1.8rem; 
   }
 }
 
@@ -259,22 +259,22 @@
   
   .category-link img,
   .prod-link img {
-    width: 90%; /* Slightly smaller width on extra small screens */
+    width: 90%; 
     height: auto;
   }
   
   .category-link h3,
   .prod-link h3 {
-    font-size: 1.2rem; /* Smaller font size for titles */
+    font-size: 1.2rem;
   }
   
   .shop-by-categories,
   .deals {
-    padding: 20px; /* Reduce padding for smaller screens */
+    padding: 20px; 
   }
 }
 
-/* Pop-up animation on scrolling */
+
 @keyframes popUp {
   0% {
     opacity: 0;
@@ -288,7 +288,7 @@
 
 .category-link,
 .prod-link {
-  opacity: 0; /* Initial state */
+  opacity: 0; 
   transform: translateY(30px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }

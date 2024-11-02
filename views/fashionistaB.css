@@ -1,4 +1,4 @@
-/* Resetting default styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -44,7 +44,7 @@ header {
 }
 
 .hero {
-  background: url('assets/website2/hero_image2.jpeg') no-repeat center top/cover;
+  background: url('../public/assets/website2/hero_image2.jpeg') no-repeat center top/cover;
   height: 80vh;
   display: flex;
   padding: 40px;
@@ -74,7 +74,7 @@ header {
 .scrolling-text span {
   display: inline-block;
   padding-left: 100%;
-  animation: scroll-text 60s linear infinite; /* Faster scrolling */
+  animation: scroll-text 60s linear infinite; 
 }
 
 @keyframes scroll-text {
@@ -187,7 +187,7 @@ footer {
   font-size: 1.2rem;
 }
 
-/*hover effect*/
+
 .category-link img,
 .prod-link img {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -195,12 +195,12 @@ footer {
 
 .category-link img:hover,
 .prod-link img:hover {
-  transform: scale(1.05); /* Slightly enlarge on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add a shadow effect */
+  transform: scale(1.05); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
 }
 
 
-/* Responsive styling for Shop by Categories and Latest Deals sections */
+
 @media (max-width: 992px) {
   .category-container,
   .deals-container {
@@ -223,12 +223,12 @@ footer {
 
   .category-link,
   .prod-link {
-      width: 100%; /* Full width containers */
+      width: 100%; 
   }
 
   .shop-by-categories h2,
   .deals h2 {
-      font-size: 2rem; /* Slightly reduce heading font size on smaller screens */
+      font-size: 2rem; 
   }
 }
 
@@ -241,22 +241,21 @@ footer {
 
   .category-link img,
   .prod-link img {
-      width: 90%; /* Slightly smaller width on extra small screens */
+      width: 90%; 
       height: auto;
   }
 
   .category-link h3,
   .prod-link h3 {
-      font-size: 1rem; /* Smaller font size for titles */
+      font-size: 1rem; 
   }
 
   .shop-by-categories,
   .deals {
-      padding: 15px; /* Reduce padding for smaller screens */
+      padding: 15px; 
   }
 }
 
-/* Pop-up animation on scrolling */
 @keyframes popUp {
   0% {
     opacity: 0;
@@ -270,7 +269,7 @@ footer {
 
 .category-link,
 .prod-link {
-  opacity: 0; /* Initial state */
+  opacity: 0; 
   transform: translateY(30px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
