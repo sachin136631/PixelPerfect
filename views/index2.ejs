@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version B</title>
+    <script>
+function trackClick() {
+    const pixelUrl = `http://localhost:3000/tracking?action=click&version=B&timestamp=${new Date().getTime()}`;
+    const img = new Image(); 
+    img.src = pixelUrl; 
+}
+    </script>
+</head>
+<body>
+    <section>
+        Many desktop publishing packages and web page editors now use Lorem Ipsum...
+    </section>
+    <button type="button" onclick="trackClick()">Sign Up</button>
+</body>
+</html>
