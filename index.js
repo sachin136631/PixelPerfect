@@ -4,6 +4,8 @@ import { getFirestore, Timestamp, FieldValue, Filter } from 'firebase-admin/fire
 
 import serviceAccount from './secrets.json' assert { type: 'json' };
 
+
+
 initializeApp({
     credential: cert(serviceAccount)
 });
@@ -19,31 +21,33 @@ let clicksgotoA = 0;
 let clicksgotoB = 0;
 const clickLogsA = [];
 const clickLogsB = [];
+let dataClickA;
+let dataClickB;
+let dataActionA;
+let dataActionB;
 
 const versionA = db.collection('usageData').doc('versionA');
 const versionB = db.collection('usageData').doc('versionB');
 
-const resetVersions = async () => {
-    try {
-        await versionA.set({
-            click: 0,
-            action: 0,
-        });
+const readData = async () => {
+    try{
+      const versionAData = await versionA.get();
+      const versionBData = await versionB.get();
         
-        await versionB.set({
-            click: 0,
-            action: 0,
-        });
-        
-        console.log("Versions reset successfully.");
+      return {
+        dataClickA : versionAData.data().click,
+        dataClickB : versionBData.data().click,
+        dataActionA : versionAData.data().action,
+        dataActionB : versionBData.data().action,
+      }
     } catch (error) {
-        console.error("Error resetting versions:", error);
+      console.error(error);
+      return null;
     }
-};
+  }
 
-resetVersions();
+app.use(express.static('public'));
 
-app.use(express.static("public"));
 
 app.get('/tracking', async (req, res) => {
     const version = req.query.version; 
@@ -118,6 +122,15 @@ app.get('/tracking', async (req, res) => {
 app.get("/", (req, res) => {
     const version = Math.random() < 0.5 ? "index11" : "index22";
     res.render(`${version}.ejs`);
+});
+
+app.get("/dashboard", async (req, res) => {
+    const data = await readData();
+    console.log("data from server: ");
+    console.log(data);
+    res.render('dashboard.ejs', {
+        dataFromServer : data,
+    });
 });
 
 app.listen(port, () => {

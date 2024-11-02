@@ -1,33 +1,38 @@
 // charts.js
-
 // Sample data for click ratios and conversion rates
+const dataContainer = document.getElementById('data-container');
+
+// Parse the data-mydata attribute
+const myData = JSON.parse(dataContainer.getAttribute('data'));
+
+console.log(myData);
 const clickRatioData = {
-    labels: ['Button A', 'Button B', 'Button C', 'Button D'], // Example buttons
+    labels: ['Regular Clicks'], // Example buttons
     datasets: [
       {
-        label: 'Group A',
-        data: [120, 80, 60, 100], // Example click counts for Group A
+        label: 'Version A',
+        data: [myData.dataClickA], // Example click counts for Group A
         backgroundColor: 'rgba(65, 105, 225, 1)', // Royal blue
       },
       {
-        label: 'Group B',
-        data: [100, 70, 90, 50], // Example click counts for Group B
+        label: 'version B',
+        data: [myData.dataClickB], // Example click counts for Group B
         backgroundColor: 'rgba(232, 222, 248, 1)', // Light lavender
       },
     ],
   };
   
   const conversionRateData = {
-    labels: ['Buy Now', 'Add to Cart'], // Example main buttons
+    labels: ['Call To Action'], // Example main buttons
     datasets: [
       {
-        label: 'Group A',
-        data: [250, 150], // Example conversion counts for Group A
+        label: 'Version A',
+        data: [myData.dataActionA], // Example conversion counts for Group A
         backgroundColor: 'rgba(65, 105, 225, 1)', // Royal blue
       },
       {
-        label: 'Group B',
-        data: [200, 130], // Example conversion counts for Group B
+        label: 'Version B',
+        data: [myData.dataActionB], // Example conversion counts for Group B
         backgroundColor: 'rgba(232, 222, 248, 1)', // Light lavender
       },
     ],
