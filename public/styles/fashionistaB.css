@@ -44,7 +44,7 @@ header {
 }
 
 .hero {
-  background: url('../public/assets/website2/hero_image2.jpeg') no-repeat center top/cover;
+  background: url('../assets/website2/hero_image2.jpeg') no-repeat center top/cover;
   height: 80vh;
   display: flex;
   padding: 40px;
