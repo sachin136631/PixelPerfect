@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background: #383636;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+.navbar-dark .navbar-nav .nav-link {
+  font-family: 'Nunito', sans-serif;
+  position: relative;
+  margin-left: 35px; /* Increased spacing */
+  padding: 20px 0; /* Reduced padding for proper spacing */
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 600;
+  outline: none;
+  transition: .5s;
+}
+
+.sticky-top.navbar-dark .navbar-nav .nav-link {
+  padding: 20px 0;
+  color: var(--dark);
+}
+
+.navbar-dark .navbar-nav .nav-link::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  bottom: -5px; /* Positioned directly below the text */
+  left: 0;
+  background: var(--primary);
+  transition: width .3s ease, left .3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover::before,
+.navbar-dark .navbar-nav .nav-link.active::before {
+  width: 100%;
+  left: 0;
+}
+
+  
+  .hero {
+    background: url('assets/hero_image.jpg') no-repeat center top/cover;
+    height: 75vh; /* 3/4th of the screen height */
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.hero-content h1 {
+  font-size: 8rem;
+  font-size: large;
+  font-weight: bold;
+}
+
+.hero-buttons .btn {
+  margin: 15px 10px;
+}
+
+.scrolling-text {
+    background-color: #383636;
+    color: rgb(247, 242, 242);
+    padding: 10px 0;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrolling-text span {
+    display: inline-block;
+    padding-left: 100%; 
+    animation: scroll-text 60s linear infinite; /* 10s for seamless scrolling */
+}
+
+@keyframes scroll-text {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+  
+  .hero-content {
+    color: black;
+    margin-right: 50px;
+    margin-top: 50px;
+  }
+  
+  .hero h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+  }
+  
+  .hero-buttons {
+    display: flex;
+  }
+  
+  .hero-buttons button:hover {
+    background-color: #555; /* This will target individual buttons on hover */
+  }
+  
+  button {
+    padding: 5px 5px;
+    width: 150px;
+    height: 30px;
+    border-radius: 15px; /* Make sure it has the px unit */
+    background-color: #f65454;
+    color: white;
+    transition: background-color 0.3s ease; /* Added 'ease' for smoother transition */
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #d44444; /* Darker shade for hover effect */
+  }
+  
+  footer {
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .shop-by-categories {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .shop-by-categories h2 {
+    margin-bottom: 30px;
+  }
+  
+  .category-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .category-link {
+    text-decoration: none;
+    color: black;
+    width: 30%; /* Makes them a bit smaller */
+    text-align: center;
+  }
+  
+  .category-link img {
+    width: 80%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .category-link h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }   
+  
+
+  .deals {
+    padding: 50px;
+    text-align: center;
+    background-color: #fdafaf;
+    
+  }
+  
+  .deals h2 {
+    margin-bottom: 30px;
+  }
+  
+  .deals-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .prod-link {
+    text-decoration: none;
+    color: black;
+    width: 30%; /* Makes them a bit smaller */
+    text-align: center;
+  }
+  
+  .prod-link img {
+    width: 80%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .prod-link h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+  }   
+
+/*hover eff*/
+.category-link img,
+.prod-link img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-link img:hover,
+.prod-link img:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add a shadow effect */
+}
+
+  
+/* Responsive styling for Shop by Categories and Latest Deals sections */
+
+@media (max-width: 992px) {
+  .category-container,
+  .deals-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .category-link,
+  .prod-link {
+    width: 80%; /* Adjust width for medium screens */
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-link img,
+  .prod-link img {
+    width: 100%; /* Full width images on smaller screens */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  .category-link,
+  .prod-link {
+    width: 100%; /* Full width containers */
+  }
+  
+  .shop-by-categories h2,
+  .deals h2 {
+    font-size: 1.8rem; /* Slightly reduce heading font size on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .category-container,
+  .deals-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .category-link img,
+  .prod-link img {
+    width: 90%; /* Slightly smaller width on extra small screens */
+    height: auto;
+  }
+  
+  .category-link h3,
+  .prod-link h3 {
+    font-size: 1.2rem; /* Smaller font size for titles */
+  }
+  
+  .shop-by-categories,
+  .deals {
+    padding: 20px; /* Reduce padding for smaller screens */
+  }
+}
+
+/* Pop-up animation on scrolling */
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-link,
+.prod-link {
+  opacity: 0; /* Initial state */
+  transform: translateY(30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  animation: popUp 0.6s ease forwards;
+}
