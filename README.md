@@ -29,6 +29,13 @@ This full-stack web application provides an intuitive UI testing platform design
 ## Video Demo and Explanation
 Demo Video Link :https://drive.google.com/drive/folders/1uq6n8hyEUud0HxqmTl4jNnrGkh6_l2EC
 
+The web-App serves two different versions of the same website on different users with equal likelyhood at localhost:3000. 
+The mouse movements,button clicks and user behaviour is tracked and stored to the firebase database.
+At the localhost:3000/dashboard, the data from the database is converted into visual representation through chart.js.
+Mouse movement coordinates are stored in heatmap.json and is later used to generate heatmap image which is displayed in the dashboard.
+To aid with readability and keep website disability friendly the color contrast between foreground and background is checked and the data is made available in the dashboard.
+Gemini API is used to generate criticism on how to improve the overall structure of the website.
+
 
 ## Future Scope
 1. **Deeper AI Integration:** Deeper AI Integration.
