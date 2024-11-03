@@ -20,17 +20,20 @@ This full-stack web application provides an intuitive UI testing platform design
 - **AI Integration:** Gemini for generating insights and improvement suggestions
 
 ## Working
-1. **UI Versions:** The app serves two different UI components (Version A and Version B) to users.
+1. **UI Versions:** The app serves two different UI components (Version A and Version B) to users with equal likelyhood.
 2. **User Interaction:** When a user interacts with a UI element, the click data, including the timestamp and version, is recorded using tracking pixels.
 3. **Data Analysis:** Click rate and performance metrics are visualized with Chart.js, offering a clear and interactive representation of results.
 4. **AI-Powered Insights:** The Gemini AI integration provides analysis and suggestions for UI optimization based on collected data.
 5. **Firebase Storage:** Data is securely stored in Firebase for efficient retrieval and scalability.
 
+## Video Demo and Explanation
+Demo Video Link :https://drive.google.com/drive/folders/1uq6n8hyEUud0HxqmTl4jNnrGkh6_l2EC
+
+
 ## Future Scope
-1. **Enhanced Analytics Dashboard:**  More comprehensive data visualization and performance analysis..
-2. **Deeper AI Integration:** Deeper AI Integration.
-3. **Websocket integration:** Websocket integration for real time updation of data.
-4. **Multiple versions of sites:** More than two templates of sites can be compared to get comprehensive data.
+1. **Deeper AI Integration:** Deeper AI Integration.
+2. **Websocket integration:** Websocket integration for real time updation of data.
+3. **Multiple versions of sites:** More than two templates of sites can be compared to get comprehensive data.
 
    
 
