@@ -7,6 +7,7 @@ This full-stack web application provides an intuitive UI testing platform design
 - **No-Code A/B Testing:** Easily set up and manage tests without requiring technical expertise.
 - **Live Data Updates:** Live updation of button/link clicks , call to action , colour contrast ratio ans its visualisation  .
 - **Privacy-Centric:** Focuses on user data privacy, collecting minimal information and not sharing with third parties.
+- **Gen AI-integration:** AI powered UI optimization suggestion based on collected data. 
 - **Lightweight & Seamless:** Optimized performance, ensuring the app does not impact site speed.
 - **Detailed Analytics:** Visual representation of data using Chart.js for easy analysis and insights.
 
@@ -21,10 +22,9 @@ This full-stack web application provides an intuitive UI testing platform design
 ## Working
 1. **UI Versions:** The app serves two different UI components (Version A and Version B) to users.
 2. **User Interaction:** When a user interacts with a UI element, the click data, including the timestamp and version, is recorded using tracking pixels.
-3. **Data Collection & Real-Time Updates:** The app uses WebSockets to send real-time data updates to the server, which logs and processes the interactions.
-4. **Data Analysis:** Click rate and performance metrics are visualized with Chart.js, offering a clear and interactive representation of results.
-5. **AI-Powered Insights:** The Gemini AI integration provides analysis and suggestions for UI optimization based on collected data.
-6. **Firebase Storage:** Data is securely stored in Firebase for efficient retrieval and scalability.
+3. **Data Analysis:** Click rate and performance metrics are visualized with Chart.js, offering a clear and interactive representation of results.
+4. **AI-Powered Insights:** The Gemini AI integration provides analysis and suggestions for UI optimization based on collected data.
+5. **Firebase Storage:** Data is securely stored in Firebase for efficient retrieval and scalability.
 
 ## Future Scope
 1. **Enhanced Analytics Dashboard:**  More comprehensive data visualization and performance analysis..
