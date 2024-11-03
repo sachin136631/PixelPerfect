@@ -4,8 +4,8 @@
 This full-stack web application provides an intuitive UI testing platform designed to optimize user interface (UI) components through real-time data collection and analysis. By integrating lightweight tracking pixels, the app records user interactions on different UI versions, calculating metrics such as click rates and timestamps. Using WebSockets, the app ensures live data updates, offering a seamless experience for tracking user behavior. A privacy-centric approach ensures user data is secure and not shared with third parties, distinguishing this app from other complex and costly analytics tools.
 
 ## Key Features
-- **No-Code A/B Testing:** Easily set up and manage tests without requiring technical expertise.
 - **Live Data Updates:** Live updation of button/link clicks , call to action , colour contrast ratio ans its visualisation  .
+- **No-Code A/B Testing:** Easily set up and manage tests without requiring technical expertise.
 - **Privacy-Centric:** Focuses on user data privacy, collecting minimal information and not sharing with third parties.
 - **Gen AI-integration:** AI powered UI optimization suggestion based on collected data. 
 - **Lightweight & Seamless:** Optimized performance, ensuring the app does not impact site speed.
