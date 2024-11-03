@@ -27,9 +27,11 @@ This full-stack web application provides an intuitive UI testing platform design
 6. **Firebase Storage:** Data is securely stored in Firebase for efficient retrieval and scalability.
 
 ## Future Scope
-**Enhanced Analytics Dashboard** More comprehensive data visualization and performance analysis.
-**Deeper AI Integration** Deeper AI Integration
-**Websocket integration** Websocket integration for real time updation of data
-**Multiple versions of sites** More than two templates of sites can be compared to get comprehensive data
+1. **Enhanced Analytics Dashboard:**  More comprehensive data visualization and performance analysis..
+2. **Deeper AI Integration:** Deeper AI Integration.
+3. **Websocket integration:** Websocket integration for real time updation of data.
+4. **Multiple versions of sites:** More than two templates of sites can be compared to get comprehensive data.
+
+   
 
 
