@@ -5,7 +5,6 @@ const dataContainer = document.getElementById('data-container');
 // Parse the data-mydata attribute
 const myData = JSON.parse(dataContainer.getAttribute('data'));
 
-console.log(myData);
 const clickRatioData = {
     labels: ['Regular Clicks'], // Example buttons
     datasets: [

@@ -11,8 +11,6 @@
 </head>
 <body>
   <span id="data-container" data='<%= JSON.stringify(dataFromServer) %>'></span>
-  <% console.log("data from ejs file:") %>
-  <% console.log(dataFromServer) %>
   <div class="container">
     <aside class="sidebar">
       <h2>Menu</h2>
@@ -59,7 +57,14 @@
 
         <div class="grid-item large">
           <h3>Eye Motion Tracker</h3>
-          <div class="chart"></div>
+          <div class="chart">
+            <img id="pic" src="assets/heatmap.png" alt="heatmap image">
+          </div>
+        </div>
+
+        <div class="grid-item full-width" id="aiSolutions">
+          <h3>AI Solutions and Fixes</h3>
+          <div id="aiContent" class="ai-content"><%= promptAnswer %></div>
         </div>
       </div>
     </main>

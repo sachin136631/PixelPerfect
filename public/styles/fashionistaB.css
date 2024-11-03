@@ -20,7 +20,7 @@ body {
 }
 
 header {
-  background: var(--accent-color);
+  background-color: var(--accent-color);
   color: white;
   padding: 15px 30px;
   display: flex;

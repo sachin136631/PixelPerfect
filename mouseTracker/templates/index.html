@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Mouse Movement Tracker</h1>
+    <p>Move your mouse around to generate heatmap data.</p>
+
+    <script>
+        // Function to send mouse coordinates to the server
+        function sendMouseData(x, y) {
+            fetch('/track', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ x: x, y: y })
+            }).then(response => {
+                if (!response.ok) {
+                    console.error("Failed to send data");
+                }
+            });
+        }
+
+        // Track mouse movement and send to server every 200 ms
+        document.addEventListener('mousemove', (event) => {
+            sendMouseData(event.clientX, event.clientY);
+        });
+    </script>
+</body>
+</html>

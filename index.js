@@ -1,13 +1,19 @@
 import express from 'express';
 import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
-import { getFirestore, Timestamp, FieldValue, Filter } from 'firebase-admin/firestore';
-
+import { getFirestore, FieldValue } from 'firebase-admin/firestore';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import dotenv from 'dotenv';
 import serviceAccount from './secrets.json' assert { type: 'json' };
 
+dotenv.config();
 
+// Initialize the Google Generative AI
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
+// Initialize Firebase Admin
 initializeApp({
-    credential: cert(serviceAccount)
+    credential: cert(serviceAccount),
 });
 
 const db = getFirestore();
@@ -19,35 +25,44 @@ let clicksA = 0;
 let clicksB = 0;
 let clicksgotoA = 0;
 let clicksgotoB = 0;
-const clickLogsA = [];
-const clickLogsB = [];
-let dataClickA;
-let dataClickB;
-let dataActionA;
-let dataActionB;
 
 const versionA = db.collection('usageData').doc('versionA');
 const versionB = db.collection('usageData').doc('versionB');
 
+// Utility function to escape HTML special characters
+const escapeHTML = (unsafe) => {
+    return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+};
+
 const readData = async () => {
-    try{
-      const versionAData = await versionA.get();
-      const versionBData = await versionB.get();
-        
-      return {
-        dataClickA : versionAData.data().click,
-        dataClickB : versionBData.data().click,
-        dataActionA : versionAData.data().action,
-        dataActionB : versionBData.data().action,
-      }
+    try {
+        const versionAData = await versionA.get();
+        const versionBData = await versionB.get();
+
+        // Ensure data exists before accessing properties
+        if (versionAData.exists && versionBData.exists) {
+            return {
+                dataClickA: versionAData.data().click || 0,
+                dataClickB: versionBData.data().click || 0,
+                dataActionA: versionAData.data().action || 0,
+                dataActionB: versionBData.data().action || 0,
+            };
+        } else {
+            console.error("Data does not exist for one or both versions.");
+            return null;
+        }
     } catch (error) {
-      console.error(error);
-      return null;
+        console.error("Error reading data:", error);
+        return null;
     }
-  }
+};
 
 app.use(express.static('public'));
-
 
 app.get('/tracking', async (req, res) => {
     const version = req.query.version; 
@@ -55,10 +70,7 @@ app.get('/tracking', async (req, res) => {
     const timestamp = new Date(); 
     const localTimestamp = timestamp.toLocaleString(); 
 
-    
-
     if (req.query.action === 'click') {
-
         if (id === '001') {
             if (version === 'A') {
                 clicksgotoA++;
@@ -70,47 +82,38 @@ app.get('/tracking', async (req, res) => {
                 } catch (error) {
                     console.error("Error updating Firestore for Goto action A:", error);
                 }
-                // clickLogsA.push({ timestamp: localTimestamp, gotoA: clicksgotoA });
-                // console.log(`Goto action A clicked: Goto action A: ${clicksgotoA}, Goto action B: ${clicksgotoB}, Clicks A: ${clicksA}, Clicks B: ${clicksB}, Timestamp: ${localTimestamp}`);
             } else if (version === 'B') {
                 clicksgotoB++;
                 try {
                     await versionB.update({
                         action: FieldValue.increment(1),
                     });
-                    console.log(`Goto action A clicked, Firestore updated.`);
+                    console.log(`Goto action B clicked, Firestore updated.`);
                 } catch (error) {
-                    console.error("Error updating Firestore for Goto action A:", error);
+                    console.error("Error updating Firestore for Goto action B:", error);
                 }
-                // clickLogsB.push({ timestamp: localTimestamp, gotoB: clicksgotoB });
-                // console.log(`Goto action B clicked: Goto action A: ${clicksgotoA}, Goto action B: ${clicksgotoB}, Clicks A: ${clicksA}, Clicks B: ${clicksB}, Timestamp: ${localTimestamp}`);
             }
         } else {
-
             if (version === 'A') {
                 clicksA++;
                 try {
                     await versionA.update({
                         click: FieldValue.increment(1),
                     });
-                    console.log(`Goto action A clicked, Firestore updated.`);
+                    console.log(`Button clicked on version A, Firestore updated.`);
                 } catch (error) {
-                    console.error("Error updating Firestore for Goto action A:", error);
+                    console.error("Error updating Firestore for version A click:", error);
                 }
-                // clickLogsA.push({ timestamp: localTimestamp, clicksofA: clicksA });
-                // console.log(`Button clicked: ${version}, Clicks A: ${clicksA}, Clicks B: ${clicksB}, Timestamp: ${localTimestamp}`);
             } else if (version === 'B') {
                 clicksB++;
                 try {
                     await versionB.update({
                         click: FieldValue.increment(1),
                     });
-                    console.log(`Goto action A clicked, Firestore updated.`);
+                    console.log(`Button clicked on version B, Firestore updated.`);
                 } catch (error) {
-                    console.error("Error updating Firestore for Goto action A:", error);
+                    console.error("Error updating Firestore for version B click:", error);
                 }
-                // clickLogsB.push({ timestamp: localTimestamp, clicksofB: clicksB });
-                // console.log(`Button clicked: ${version}, Clicks A: ${clicksA}, Clicks B: ${clicksB}, Timestamp: ${localTimestamp}`);
             }
         }
     }
@@ -126,13 +129,17 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard", async (req, res) => {
     const data = await readData();
-    console.log("data from server: ");
-    console.log(data);
+    
+    const prompt = "Give some general, applicable, and useful tips for building websites. Make it professional and witty, including advice on user retention, A/B testing, readability, and more. Plain text, no formatting.";
+
+    const result = await model.generateContent(prompt);
+
     res.render('dashboard.ejs', {
-        dataFromServer : data,
+        dataFromServer: data,
+        promptAnswer: result.response.text(),
     });
 });
 
 app.listen(port, () => {
-    console.log(`The server is running live on ${port}`);
+    console.log(`The server is running live on http://localhost:${port}`);
 });

@@ -71,6 +71,7 @@
   .dashboard {
     width: 90%;
     padding: 20px;
+    overflow-y: auto;
   }
   
   .main-heading {
@@ -105,6 +106,7 @@
   .side-by-side {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
   }
   
   .sub-section {
@@ -139,7 +141,7 @@
     padding: 20px;
     background-color: #333;
     border-radius: 10px;
-    width: 300px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
   }
@@ -178,7 +180,30 @@
 .fail {
     color: #d9534f;
 }
-  
+
+#pic{
+  width: 100%; 
+  height: 300px;
+  object-fit: contain;
+}
+
+.grid-item.full-width {
+  grid-column: span 2;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  height: 500px;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+}
+
+.ai-content {
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  overflow: auto; 
+  align-self: flex-start;
+}
   
   hr {
     border: 0.5px solid #444;
